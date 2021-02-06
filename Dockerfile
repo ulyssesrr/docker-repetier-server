@@ -1,11 +1,12 @@
-FROM debian:buster-slim
+FROM balenalib/armv7hf-debian:buster
 
-ARG VERSION="1.0.2"
+ARG ARCH="armhf"
+ARG VERSION="1.0.3"
 
-LABEL maintainer="felix.yadomi@gmail.com"
+LABEL maintainer="ulyssesrr@gmail.com"
 LABEL version="v${VERSION}"
 
-ADD http://download.repetier.com/files/server/debian-amd64/Repetier-Server-${VERSION}-Linux.deb repetier-server.deb
+ADD http://download.repetier.com/files/server/debian-${ARCH}/Repetier-Server-${VERSION}-Linux.deb repetier-server.deb
 
 # Install with dpkg and remove the deb after
 RUN dpkg --unpack repetier-server.deb \
